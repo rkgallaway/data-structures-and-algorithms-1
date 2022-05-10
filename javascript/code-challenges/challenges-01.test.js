@@ -90,7 +90,10 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  let newValues = [];
+  arr.forEach((value) => {
+    newValues.push(value);
+  });
 };
 
 const addNumbers = (num, arr, times, callback) => {
