@@ -116,7 +116,10 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  return arr.reduce((acc, person) => {
+    acc.push(person.name);
+    return acc;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,10 +128,19 @@ CHALLENGE 6
 Write a function named reversedString that takes in a string and returns a string with the letters in reverse order.
 
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
+
+describe('Testing challenge 6', () => {
+  test('It should return the string with the characters in reverse order', () => {
+    expect(reversedString('Code 301')).toStrictEqual('103 edoC');
+  });
+});
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
-  // Solution code here...
+  let arr = str.split('');
+  return arr.reduce((newString, currentLetter) => {
+    return currentLetter + newString;
+  }, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
