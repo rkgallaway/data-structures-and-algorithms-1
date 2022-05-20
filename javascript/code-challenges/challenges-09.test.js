@@ -8,7 +8,7 @@ using the 'reduce' method.
 
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
-const maxInArray = arr => {
+const maxInArray = (arr) => {
   return arr.reduce((a, b) => Math.max(a, b));
 };
 
@@ -33,8 +33,8 @@ const courseInfo = {
   finalExam: true,
 };
 
-const getCourseKeys = obj => {
-  // Solution code here...
+const getCourseKeys = (obj) => {
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-  // Solution code here...
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,8 +68,10 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 ------------------------------------------------------------------------------------------------ */
 
-const updateNumbers = obj => {
-  // Solution code here...
+const updateNumbers = (obj) => {
+  return Object.entries(obj).map((val) => {
+    return `${val[0]}: ${val[1]}`;
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,9 +123,11 @@ const characters = [
   },
 ];
 
-const getHouses = arr => {
+const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach((person) => {
+    houses.push(person.house);
+  });
   return houses;
 };
 
@@ -140,7 +144,17 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let kids = 0;
+  arr.forEach((person) => {
+    if (person.name === character) {
+      Object.keys(person).forEach((key, idx) => {
+        if (key === 'children') {
+          kids = Object.values(person)[idx].length;
+        }
+      });
+    }
+  });
+  return kids ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -161,7 +175,7 @@ CHALLENGE 8 - Stretch Goal
 Write a function named totalCharacters that takes in an array and returns the number of characters in the array.
 ------------------------------------------------------------------------------------------------ */
 
-const totalCharacters = arr => {
+const totalCharacters = (arr) => {
   // Solution code here...
 };
 
@@ -175,7 +189,7 @@ All of these objects should be added to an array named "sizes". Return the "size
 For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ... ].
 ------------------------------------------------------------------------------------------------ */
 
-const houseSize = arr => {
+const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
   return sizes;
@@ -199,7 +213,7 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
-const houseSurvivors = arr => {
+const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
   return survivors;
