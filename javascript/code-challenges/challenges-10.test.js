@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
@@ -8,7 +8,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str) {
-  let newArr = str.split("");
+  let newArr = str.split('');
   return newArr.splice(newArr.length - 10, 10);
 }
 
@@ -26,7 +26,16 @@ For example:
 
 return: 23
 ------------------------------------------------------------------------------------------------ */
-const findMax = (matrix) => {};
+const findMax = (matrix) => {
+  for (let i = 0; i < matrix.length; i++) {
+    let maxNum = matrix[0][0];
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (maxNum < matrix[i][j]) {
+        return Math.max(matrix[i][j]);
+      }
+    }
+  }
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -40,10 +49,18 @@ For example:
   [2, 5, 5]
 ]
 
+I tried some stuff on my own and then found a simple yet elegant solution online that I liked: https://stackoverflow.com/questions/66836933/computing-sum-of-a-2d-array-in-javascript
+
 return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
-  // Solution code here...
+  let sum = 0;
+  for (const row of matrix) {
+    for (const cell of row) {
+      sum += cell;
+    }
+  }
+  return sum;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,18 +76,18 @@ Return the array of the total number of cookies sold per hour for all of the sto
 ------------------------------------------------------------------------------------------------ */
 
 const hoursOpen = [
-  "9 a.m.",
-  "10 a.m.",
-  "11 a.m.",
-  "12 p.m.",
-  "1 p.m.",
-  "2 p.m.",
-  "3 p.m.",
-  "4 p.m.",
-  "5 p.m.",
-  "6 p.m.",
-  "7 p.m.",
-  "8 p.m.",
+  '9 a.m.',
+  '10 a.m.',
+  '11 a.m.',
+  '12 p.m.',
+  '1 p.m.',
+  '2 p.m.',
+  '3 p.m.',
+  '4 p.m.',
+  '5 p.m.',
+  '6 p.m.',
+  '7 p.m.',
+  '8 p.m.',
 ];
 
 const firstPike = [17, 18, 23, 24, 24, 12, 13, 27, 30, 20, 24, 18];
@@ -82,7 +99,15 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+  let totals = [];
+  for (let i in stores[0]) {
+    let hourlyTotal = 0;
+    for (let j in stores) {
+      hourlyTotal += stores[j][i];
+    }
+    totals.push(hourlyTotal);
+  }
+  return totals;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,10 +118,31 @@ Pat has decided that he would also like to organize his data as objects containi
 Here is sample data for the 9:00 sales: { sales: '88 cookies', time: '9 a.m.' }.
 
 Write a function named salesData that uses forEach to iterate over the hourlySales array and create an object for each hour. Return an array of the formatted data.
+
+  test('It should create an object of data for each store', () => {
+    expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
+      { sales: '88 cookies', time: '9 a.m.' },
+      { sales: '153 cookies', time: '10 a.m.' },
+      { sales: '252 cookies', time: '11 a.m.' },
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' },
+    ]);
+
+
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  const newArr = 0;
+  data.forEach((item) => {
+    // newArr.push(item);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,27 +153,27 @@ Write a function named howManyTreats that will return the quantity of treats you
 
 const errands = [
   {
-    store: "Grocery store",
+    store: 'Grocery store',
     items: [
-      { name: "Eggs", quantity: 12 },
-      { name: "Milk", quantity: 1 },
-      { name: "Apples", quantity: 3 },
+      { name: 'Eggs', quantity: 12 },
+      { name: 'Milk', quantity: 1 },
+      { name: 'Apples', quantity: 3 },
     ],
   },
   {
-    store: "Drug store",
+    store: 'Drug store',
     items: [
-      { name: "Toothpaste", quantity: 1 },
-      { name: "Toothbrush", quantity: 3 },
-      { name: "Mouthwash", quantity: 1 },
+      { name: 'Toothpaste', quantity: 1 },
+      { name: 'Toothbrush', quantity: 3 },
+      { name: 'Mouthwash', quantity: 1 },
     ],
   },
   {
-    store: "Pet store",
+    store: 'Pet store',
     items: [
-      { name: "Cans of food", quantity: 8 },
-      { name: "Treats", quantity: 24 },
-      { name: "Leash", quantity: 1 },
+      { name: 'Cans of food', quantity: 8 },
+      { name: 'Treats', quantity: 24 },
+      { name: 'Leash', quantity: 1 },
     ],
   },
 ];
@@ -238,26 +284,26 @@ Run your tests from the console: jest challenge-12.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe("Testing challenge 1", () => {
-  test("it should return the last 10 characters of a string as an array", () => {
-    expect(returnTen("hello world")).toStrictEqual([
-      "e",
-      "l",
-      "l",
-      "o",
-      " ",
-      "w",
-      "o",
-      "r",
-      "l",
-      "d",
+describe('Testing challenge 1', () => {
+  test('it should return the last 10 characters of a string as an array', () => {
+    expect(returnTen('hello world')).toStrictEqual([
+      'e',
+      'l',
+      'l',
+      'o',
+      ' ',
+      'w',
+      'o',
+      'r',
+      'l',
+      'd',
     ]);
-    expect(returnTen("world")).toStrictEqual(["w", "o", "r", "l", "d"]);
+    expect(returnTen('world')).toStrictEqual(['w', 'o', 'r', 'l', 'd']);
   });
 });
 
-describe("Testing challenge 2", () => {
-  test("It should return the max value", () => {
+describe('Testing challenge 2', () => {
+  test('It should return the max value', () => {
     expect(
       findMax([
         [13, 24, 24, 2],
@@ -268,8 +314,8 @@ describe("Testing challenge 2", () => {
   });
 });
 
-describe("Testing challenge 3", () => {
-  test("It should return the total sum", () => {
+describe('Testing challenge 3', () => {
+  test('It should return the total sum', () => {
     expect(
       totalSum([
         [13, 24, 24, 2],
@@ -281,29 +327,29 @@ describe("Testing challenge 3", () => {
   });
 });
 
-describe("Testing challenge 4", () => {
-  test("It should add the hourly totals array", () => {
+describe('Testing challenge 4', () => {
+  test('It should add the hourly totals array', () => {
     expect(grandTotal(cookieStores)).toStrictEqual([
       88, 153, 252, 286, 139, 161, 145, 232, 276, 207, 161, 169,
     ]);
   });
 });
 
-describe("Testing challenge 5", () => {
-  test("It should create an object of data for each store", () => {
+describe('Testing challenge 5', () => {
+  test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
-      { sales: "88 cookies", time: "9 a.m." },
-      { sales: "153 cookies", time: "10 a.m." },
-      { sales: "252 cookies", time: "11 a.m." },
-      { sales: "286 cookies", time: "12 p.m." },
-      { sales: "139 cookies", time: "1 p.m." },
-      { sales: "161 cookies", time: "2 p.m." },
-      { sales: "145 cookies", time: "3 p.m." },
-      { sales: "232 cookies", time: "4 p.m." },
-      { sales: "276 cookies", time: "5 p.m." },
-      { sales: "207 cookies", time: "6 p.m." },
-      { sales: "161 cookies", time: "7 p.m." },
-      { sales: "169 cookies", time: "8 p.m." },
+      { sales: '88 cookies', time: '9 a.m.' },
+      { sales: '153 cookies', time: '10 a.m.' },
+      { sales: '252 cookies', time: '11 a.m.' },
+      { sales: '286 cookies', time: '12 p.m.' },
+      { sales: '139 cookies', time: '1 p.m.' },
+      { sales: '161 cookies', time: '2 p.m.' },
+      { sales: '145 cookies', time: '3 p.m.' },
+      { sales: '232 cookies', time: '4 p.m.' },
+      { sales: '276 cookies', time: '5 p.m.' },
+      { sales: '207 cookies', time: '6 p.m.' },
+      { sales: '161 cookies', time: '7 p.m.' },
+      { sales: '169 cookies', time: '8 p.m.' },
     ]);
 
     expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(
@@ -312,33 +358,33 @@ describe("Testing challenge 5", () => {
   });
 });
 
-describe("Testing challenge 6", () => {
-  test("It should return the number 24", () => {
+describe('Testing challenge 6', () => {
+  test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
 });
 
-xdescribe("Testing challenge 7", () => {
+xdescribe('Testing challenge 7', () => {
   const battleshipData = [
-    ["#", " ", "#", " "],
-    ["#", " ", "#", " "],
-    ["#", " ", " ", " "],
-    [" ", " ", "#", "#"],
+    ['#', ' ', '#', ' '],
+    ['#', ' ', '#', ' '],
+    ['#', ' ', ' ', ' '],
+    [' ', ' ', '#', '#'],
   ];
 
   test('It should return "hit" when it hits a boat', () => {
-    expect(battleship(battleshipData, 0, 0)).toStrictEqual("hit");
-    expect(battleship(battleshipData, 1, 0)).toStrictEqual("hit");
+    expect(battleship(battleshipData, 0, 0)).toStrictEqual('hit');
+    expect(battleship(battleshipData, 1, 0)).toStrictEqual('hit');
   });
 
   test('It should return "miss" when it doesn\'t hit a boat', () => {
-    expect(battleship(battleshipData, 0, 1)).toStrictEqual("miss");
-    expect(battleship(battleshipData, 3, 0)).toStrictEqual("miss");
+    expect(battleship(battleshipData, 0, 1)).toStrictEqual('miss');
+    expect(battleship(battleshipData, 3, 0)).toStrictEqual('miss');
   });
 });
 
-xdescribe("Testing challenge 8", () => {
-  test("It should multiply all the numbers together", () => {
+xdescribe('Testing challenge 8', () => {
+  test('It should multiply all the numbers together', () => {
     expect(
       calculateProduct([
         [1, 2],
@@ -348,7 +394,7 @@ xdescribe("Testing challenge 8", () => {
     ).toStrictEqual(720);
   });
 
-  test("It should return zero if there are any zeroes in the data", () => {
+  test('It should return zero if there are any zeroes in the data', () => {
     expect(
       calculateProduct([
         [2, 3, 4, 6, 0],
@@ -357,27 +403,27 @@ xdescribe("Testing challenge 8", () => {
       ])
     ).toStrictEqual(0);
   });
-  test("It should work even if some of the arrays contain no numbers", () => {
+  test('It should work even if some of the arrays contain no numbers', () => {
     expect(calculateProduct([[1, 2], [], [3, 4, 5]])).toStrictEqual(120);
   });
 });
 
-xdescribe("Testing challenge 9", () => {
-  test("It should calculate and return the average temperature of the data set", () => {
+xdescribe('Testing challenge 9', () => {
+  test('It should calculate and return the average temperature of the data set', () => {
     expect(averageDailyTemperature(weeklyTemperatures)).toStrictEqual(60.25);
   });
 });
 
-xdescribe("Testing challenge 10", () => {
-  test("It should return the lowest weekly average temperature within the data set", () => {
+xdescribe('Testing challenge 10', () => {
+  test('It should return the lowest weekly average temperature within the data set', () => {
     expect(lowestWeeklyAverage(weeklyTemperatures)).toStrictEqual(57);
     expect(lowestWeeklyAverage(lowestWeeklyTemperatureData)).toStrictEqual(46);
   });
 });
 
-xdescribe("Testing challenge 11", () => {
-  test("It should return the total count for each row", () => {
-    let result = excel("1,1,1\n4,4,4\n9,9,9");
+xdescribe('Testing challenge 11', () => {
+  test('It should return the total count for each row', () => {
+    let result = excel('1,1,1\n4,4,4\n9,9,9');
     expect(result.length).toStrictEqual(3);
     expect(result[0]).toStrictEqual(3);
     expect(result[1]).toStrictEqual(12);
