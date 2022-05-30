@@ -11,8 +11,8 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  let sleep = 'now';
-  return sleep;
+  let regex = /^((Mr)|(Mrs)|(Ms)|(Dr))\.\s[a-zA-Z]+/g;
+  return arr.filter((str) => regex.test(str));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +24,10 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map((str) => {
+    let firstLetter = str.charAt(0).toUpperCase();
+    return firstLetter + str.substr(1);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +104,15 @@ let starWarsData = [
 ];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  const luke = arr.find((char) => (char.name = 'Luke Skywalker'));
+  return arr
+    .filter((char) => parseInt(char.mass) > parseInt(luke.mass))
+    .reduce((str, currentChar, i, arr) => {
+      i === arr.length - 1
+        ? (str += currentChar.name)
+        : (str += currentChar.name + ' - ');
+      return str;
+    }, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -119,7 +130,18 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => {
+    const aVal = a[property];
+    const bVal = b[property];
+
+    if (aVal < bVal) {
+      return -1;
+    } else if (aVal > bVal) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
