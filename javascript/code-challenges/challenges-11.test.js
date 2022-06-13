@@ -19,8 +19,11 @@ Becomes:
 ------------------------------------------------------------------------------------------------ */
 
 function transformToLis(obj) {
-  for (let name in obj) {
+  let result = [];
+  for (let [key, value] of Object.entries(obj)) {
+    result.push('<li>' + key + ': ' + value + '</li>');
   }
+  return result;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,7 +37,15 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 ------------------------------------------------------------------------------------------------ */
 
 const count = (target, input) => {
-  // Solution code here...
+  let result = 0;
+  for (let eachArray of input) {
+    eachArray.reduce((a, c) => {
+      if (c === target) {
+        result++;
+      }
+    }, 0);
+  }
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -47,7 +58,15 @@ You may want to use filter, map, or reduce for this problem, but are not require
 For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
 
-const totalSum = (input) => {};
+const totalSum = (input) => {
+  let result = 0;
+  input.reduce((accumulator, current) => {
+    current.reduce((a, c) => {
+      result += c;
+    }, 0);
+  }, 0);
+  return result;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -136,7 +155,10 @@ let starWarsData = [
 ];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  return data
+    .filter((obj) => obj.gender === 'female' || obj.gender === 'male')
+    .map((obj) => obj.name)
+    .reduce((a, c) => a + ' and ' + c);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +168,16 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  let height = data[0].height;
+  let result = data[0].name;
+  data.map((obj) => {
+    let newHeight = parseInt(obj.height);
+    if (newHeight < height) {
+      result = obj.name;
+      height = newHeight;
+    }
+  });
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
