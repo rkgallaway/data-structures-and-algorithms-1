@@ -2,4 +2,5 @@
 
 ## Table of Contents
 
-[array-reverse](./javascript/array-reverse/README.md)
+[Array Reverse](./javascript/array-reverse/README.md)
+[Binary Search](./javascript/array-binary-search/README.md)
