@@ -1,7 +1,5 @@
 'use strict';
 
-class LinkedList {
-
-}
+class LinkedList {}
 
 module.exports = LinkedList;
