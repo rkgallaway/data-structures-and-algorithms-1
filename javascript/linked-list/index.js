@@ -16,17 +16,46 @@ class LinkedList {
     this.head = new Node(value, this.head);
   }
 
-  includes(val) {
+  // insertBefore(value) {}
+
+  insertAfter(searchValue, val) {
     let current = this.head;
-    // console.log(searchVal);
-    // console.log(current.value);
-    while (current.value !== val) {
-      current = current.next;
+    while (current) {
+      if (current.value === val) {
+        return (this.head = new Node(val, this.head));
+      }
     }
-    console.log(`Value: ${val} is present`);
   }
 
-  toString(value) {
+  append(value) {
+    const node = new Node(value);
+    let current;
+
+    if (!this.head) {
+      this.head = node;
+    } else {
+      current = this.head;
+
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+    this.size++;
+  }
+
+  includes(val) {
+    let current = this.head;
+    console.log(current.value);
+
+    while (current) {
+      if (current.value === val) {
+        console.log(`Value: ${val} is present`);
+      }
+    }
+  }
+
+  toString() {
     console.log(`{ ${this.head.value} } ->, Null`);
   }
 }
@@ -34,8 +63,16 @@ class LinkedList {
 let linkedList = new LinkedList();
 
 linkedList.insert(99);
-linkedList.includes(99);
+linkedList.insert(12);
+linkedList.insert(343);
+linkedList.insert(666666555);
+linkedList.insert(86);
+linkedList.append(400);
+linkedList.append(900);
+
+// linkedList.includes(400);
 linkedList.toString(linkedList);
+// linkedList.insertAfter(86, 12);
 console.log(linkedList);
 
 module.exports = {
