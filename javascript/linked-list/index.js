@@ -10,10 +10,19 @@ class Node {
 class LinkedList {
   constructor() {
     this.head = null;
+    // this.length = 0;
   }
 
   insert(value) {
-    this.head = new Node(value, this.head);
+    const newNode = new Node(value);
+    // this.head = newNode;
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    return;
   }
 
   // insertBefore(value) {}
@@ -46,14 +55,18 @@ class LinkedList {
 
   includes(val) {
     let current = this.head;
-    console.log(current.value);
+    // console.log(current.value);
 
-    while (current) {
-      if (current.value === val) {
-        console.log(`Value: ${val} is present`);
-      }
+    if (current.value !== val) {
+      console.log(`Value: ${val} NOT HERE`);
+      return;
+    } else {
+      console.log(`Value: ${val} IS HERE`);
+      return;
     }
   }
+
+  nThFromEnd() {}
 
   toString() {
     console.log(`{ ${this.head.value} } ->, Null`);
@@ -66,11 +79,11 @@ linkedList.insert(99);
 linkedList.insert(12);
 linkedList.insert(343);
 linkedList.insert(666666555);
-linkedList.insert(86);
-linkedList.append(400);
-linkedList.append(900);
+linkedList.insert(87);
+// linkedList.append(400);
+// linkedList.append(900);
 
-// linkedList.includes(400);
+linkedList.includes(666666555);
 linkedList.toString(linkedList);
 // linkedList.insertAfter(86, 12);
 console.log(linkedList);
