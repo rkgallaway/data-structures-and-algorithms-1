@@ -23,6 +23,24 @@ class LinkedList {
     return results;
   }
 
+  add(value) {
+    const node = new Node(value);
+
+    if (!this.head) {
+      this.head = node;
+      return this;
+    }
+
+    let current = this.head;
+
+    while (current.next) {
+      current = current.next;
+    }
+
+    current.next = node;
+    return this;
+  }
+
   insert(value) {
     let newNode = new Node(value);
     newNode.next = this.head;
@@ -52,6 +70,7 @@ class LinkedList {
     result += 'NULL';
     return result;
   }
+
   append(value) {
     const node = new Node(value);
     if (!this.head) {
