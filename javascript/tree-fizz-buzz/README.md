@@ -1,4 +1,4 @@
-# Tree Fizz Buzz
+# Tree Max
 
 ## Whiteboard Process
 
