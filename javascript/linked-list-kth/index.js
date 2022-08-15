@@ -86,6 +86,29 @@ class LinkedList {
     current.next = node;
     return this;
   }
+
+  kThValueFromTheEnd(k) {
+    let current = this.head;
+    let newCurrent = this.head;
+    let length = 0;
+    let length2 = 0;
+    while (current) {
+      length++;
+      current = current.next;
+    }
+
+    let kThNode = length - k;
+
+    while (newCurrent) {
+      length2++;
+      if (length2 === kThNode) {
+        console.log('LOOK HERE', newCurrent.value);
+        return newCurrent.value;
+      } else {
+        newCurrent = newCurrent.next;
+      }
+    }
+  }
 }
 
 let linkedList = new LinkedList();
@@ -93,17 +116,11 @@ let linkedList = new LinkedList();
 linkedList.insert(99);
 linkedList.insert(88);
 linkedList.insert(55);
-linkedList.insert(99);
-linkedList.insert(99);
-linkedList.insert(99);
-linkedList.insert(99);
-linkedList.insert(99);
 linkedList.insert(77777);
 linkedList.append(500);
+linkedList.kThValueFromTheEnd(2);
 
-console.log(linkedList.includes(88));
 console.log(linkedList.toString(linkedList));
-console.log(linkedList);
 
 module.exports = {
   Node,
