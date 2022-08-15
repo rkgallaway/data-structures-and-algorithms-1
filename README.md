@@ -10,6 +10,8 @@
 
 [Linked Lists](./javascript/linked-list/README.md)
 
+[Linked Lists Insertion](./javascript/linked-list-insertions/README.md)
+
 [Linked List Zip](./javascript/linked-list-zip/README.md)
 
 [Trees](./javascript/trees/README.md)
