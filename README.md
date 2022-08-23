@@ -14,6 +14,8 @@
 
 [Linked List Zip](./javascript/linked-list-zip/README.md)
 
+[Stacks and Queues](./javascript/stacks-and-queues/README.md)
+
 [Trees](./javascript/trees/README.md)
 
 [Tree Max](./javascript/tree-max/README.md)
